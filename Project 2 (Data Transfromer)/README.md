@@ -202,35 +202,18 @@ FROM orders
 INNER JOIN customers
 ON orders.CustomerID = customers.CustomerID;
 ```
-Purpose: Returns records where a customer has a matching order.
-
----
-
-## 👥 Part A — Customer & Order Analysis
-
-### 🔗 1. INNER JOIN
-
-The project combines customers and orders using an `INNER JOIN`:
-
-\`\`\`sql
-SELECT *
-FROM orders
-INNER JOIN customers
-ON orders.CustomerID = customers.CustomerID;
-\`\`\`
-
 **Purpose:** Returns records where a customer has a matching order.
 
 ---
 
 ### ⬅️ 2. LEFT JOIN
 
-\`\`\`sql
+```
 SELECT *
 FROM customers
 LEFT JOIN orders
 ON customers.CustomerID = orders.CustomerID;
-\`\`\`
+```
 
 **Purpose:** Returns all customers and their matching orders where available.
 
@@ -238,12 +221,12 @@ ON customers.CustomerID = orders.CustomerID;
 
 ### ➡️ 3. RIGHT JOIN
 
-\`\`\`sql
+```
 SELECT *
 FROM customers
 RIGHT JOIN orders
 ON customers.CustomerID = orders.CustomerID;
-\`\`\`
+```
 
 **Purpose:** Returns all orders along with matching customer information.
 
@@ -253,7 +236,7 @@ ON customers.CustomerID = orders.CustomerID;
 
 The project demonstrates combining `LEFT JOIN` and `RIGHT JOIN` results using `UNION` to create a full-join style result.
 
-\`\`\`sql
+```
 SELECT *
 FROM customers
 LEFT JOIN orders
@@ -265,20 +248,20 @@ SELECT *
 FROM customers
 RIGHT JOIN orders
 ON customers.CustomerID = orders.CustomerID;
-\`\`\`
+```
 
 ---
 
 ### 💰 5. Orders Above Average Amount
 
-\`\`\`sql
+```
 SELECT *
 FROM customers
 INNER JOIN orders
 ON customers.CustomerID = orders.CustomerID
 WHERE orders.TotalAmount >
       (SELECT AVG(TotalAmount) FROM orders);
-\`\`\`
+```
 
 **Purpose:** Identifies customer orders whose `TotalAmount` is greater than the average order amount.
 
@@ -288,11 +271,11 @@ WHERE orders.TotalAmount >
 
 ### 💵 6. Employees Above Average Salary
 
-\`\`\`sql
+```
 SELECT *
 FROM employees
 WHERE Salary > (SELECT AVG(Salary) FROM employees);
-\`\`\`
+```
 
 **Purpose:** Finds employees whose salary is above the average salary of all employees.
 
@@ -302,12 +285,12 @@ WHERE Salary > (SELECT AVG(Salary) FROM employees);
 
 ### 📆 7. Extract Order Year & Month
 
-\`\`\`sql
+```
 SELECT *,
        YEAR(OrderDate) AS OrderYear,
        MONTH(OrderDate) AS OrderMonth
 FROM orders;
-\`\`\`
+```
 
 **Functions Used:**
 
@@ -320,11 +303,11 @@ FROM orders;
 
 ### ⏳ 8. Calculate Days Since Order
 
-\`\`\`sql
+```
 SELECT *,
        DATEDIFF(CURDATE(), OrderDate) AS Days_Difference
 FROM orders;
-\`\`\`
+```
 
 **Purpose:** Calculates the number of days between the current date and each order date.
 
@@ -332,11 +315,11 @@ FROM orders;
 
 ### 🗓️ 9. Format Order Date
 
-\`\`\`sql
+```
 SELECT *,
        DATE_FORMAT(OrderDate, '%d-%m-%Y') AS Formatted_OrderDate
 FROM orders;
-\`\`\`
+```
 
 **Purpose:** Converts the order date into a `DD-MM-YYYY` display format.
 
@@ -346,11 +329,11 @@ FROM orders;
 
 ### 👤 10. Create Full Employee Name
 
-\`\`\`sql
+```
 SELECT *,
        CONCAT(FirstName, ' ', LastName) AS FullName
 FROM employees;
-\`\`\`
+```
 
 **Purpose:** Combines first and last names into a single `FullName` column.
 
@@ -358,11 +341,11 @@ FROM employees;
 
 ### ✏️ 11. Replace Customer First Name
 
-\`\`\`sql
+```
 SELECT *,
        REPLACE(FirstName, 'John', 'Johnathan') AS UpdatedFirstName
 FROM customers;
-\`\`\`
+```
 
 **Purpose:** Demonstrates text replacement using the `REPLACE()` function.
 
@@ -370,12 +353,12 @@ FROM customers;
 
 ### 🔠 12. Convert Text to Uppercase & Lowercase
 
-\`\`\`sql
+```
 SELECT *,
        UPPER(FirstName) AS UPPER_FIRST_NAME,
        LOWER(LastName) AS LOWER_LAST_NAME
 FROM customers;
-\`\`\`
+```
 
 **Functions Used:**
 
@@ -388,11 +371,11 @@ FROM customers;
 
 ### ✂️ 13. Trim Customer Emails
 
-\`\`\`sql
+```
 SELECT *,
        TRIM(Email) AS TrimmedEmail
 FROM customers;
-\`\`\`
+```
 
 **Purpose:** Demonstrates removal of leading and trailing whitespace from email values.
 
@@ -402,11 +385,11 @@ FROM customers;
 
 ### ➕ 14. Running Order Total
 
-\`\`\`sql
+```
 SELECT *,
        SUM(TotalAmount) OVER (ORDER BY OrderID) AS RunningTotal
 FROM orders;
-\`\`\`
+```
 
 **Purpose:** Calculates a cumulative running total of order amounts according to `OrderID`.
 
@@ -414,11 +397,11 @@ FROM orders;
 
 ### 🏅 15. Rank Orders by Total Amount
 
-\`\`\`sql
+```sql
 SELECT *,
        RANK() OVER (ORDER BY TotalAmount DESC) AS OrderRank
 FROM orders;
-\`\`\`
+```
 
 **Purpose:** Ranks orders from the highest `TotalAmount` to the lowest.
 
@@ -426,7 +409,7 @@ FROM orders;
 
 ### 🏷️ 16. Calculate Discount Percentage
 
-\`\`\`sql
+```sql
 SELECT *,
        CASE
            WHEN TotalAmount > 1000 THEN 10
@@ -434,7 +417,7 @@ SELECT *,
            ELSE 0
        END AS DiscountPercent
 FROM orders;
-\`\`\`
+```
 
 **Business Logic:**
 
@@ -448,7 +431,7 @@ FROM orders;
 
 ### 💼 17. Categorize Employee Salaries
 
-\`\`\`sql
+```
 SELECT *,
        CASE
            WHEN Salary > 80000 THEN 'HIGH'
@@ -456,7 +439,7 @@ SELECT *,
            ELSE 'LOW'
        END AS SalaryCategory
 FROM employees;
-\`\`\`
+```
 
 **Salary Categories:**
 
@@ -526,9 +509,9 @@ Make sure **MySQL Server** and a MySQL client such as **MySQL Workbench** are in
 
 Open:
 
-\`\`\`text
+```text
 Project - 2.sql
-\`\`\`
+```
 
 in your MySQL editor.
 
@@ -536,11 +519,11 @@ in your MySQL editor.
 
 Run the database and table creation statements:
 
-\`\`\`sql
+```
 CREATE DATABASE Data_Transformer;
 
 USE Data_Transformer;
-\`\`\`
+```
 
 Then execute the table creation and `INSERT` statements.
 
@@ -554,9 +537,9 @@ Execute the queries section-by-section to view the JOIN, date, string, window-fu
 
 This project is intended for **educational and learning purposes**.
 
-\`\`\`text
+```text
 Free to use, study, modify, and extend for educational purposes.
-\`\`\`
+```
 
 ---
 
