@@ -125,24 +125,20 @@ The goal is to demonstrate **relational database querying, data transformation, 
 
 The **Customers** and **Orders** tables are connected using the common field:
 
-\`\`\`text
+```text
 CustomerID
-\`\`\`
-
-\`\`\`text
 customers.CustomerID
         │
-        │  Primary Key
+        │ Primary Key
         ▼
 orders.CustomerID
         │
-        │  Foreign Key
+        │ Foreign Key
         ▼
 Customer Orders
-\`\`\`
 
 This relationship allows customer information and order information to be analyzed together using SQL `JOIN` operations.
-
+```
 ---
 
 ## 🔄 Project Workflow
