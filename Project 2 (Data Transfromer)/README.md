@@ -143,7 +143,7 @@ This relationship allows customer information and order information to be analyz
 
 ## 🔄 Project Workflow
 
-\`\`\`text
+```text
 Program Start
       │
       ▼
@@ -188,7 +188,7 @@ Program Start
                │
                ▼
        Meaningful Results 📊
-\`\`\`
+```
 
 ---
 
