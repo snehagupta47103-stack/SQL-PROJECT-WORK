@@ -144,9 +144,9 @@ This relationship allows customer information and order information to be analyz
 ## 🔄 Project Workflow
 
 ```text
-Program Start
-      │
-      ▼
+         Program Start
+              │
+              ▼
 ┌──────────────────────────────┐
 │ Create Data_Transformer DB   │
 └──────────────┬───────────────┘
@@ -189,6 +189,20 @@ Program Start
                ▼
        Meaningful Results 📊
 ```
+
+---
+
+## 👥 Part A — Customer & Order Analysis
+## 🔗 1. INNER JOIN
+
+The project combines customers and orders using an INNER JOIN:
+```
+SELECT *
+FROM orders
+INNER JOIN customers
+ON orders.CustomerID = customers.CustomerID;
+```
+Purpose: Returns records where a customer has a matching order.
 
 ---
 
