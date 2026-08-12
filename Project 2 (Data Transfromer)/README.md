@@ -95,7 +95,7 @@ The goal is to demonstrate **relational database querying, data transformation, 
 
 ## 🏗️ Database Structure
 
-\`\`\`text
+```text
 📦 Data_Transformer
 │
 ├── 👥 customers
@@ -118,8 +118,7 @@ The goal is to demonstrate **relational database querying, data transformation, 
     ├── Department
     ├── HireDate
     └── Salary
-\`\`\`
-
+```
 ---
 
 ## 🔗 Table Relationships
